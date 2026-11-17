@@ -144,7 +144,8 @@ fun PantallaPersonajes(
         mensajeError = null
         try {
             val respuesta = RetrofitClient.api.obtenerPersonajes()
-            personajes = respuesta.results//.take(10)
+            // Limitamos estrictamente a los primeros 5 personajes
+            personajes = respuesta.results//.take(5)
         } catch (e: Exception) {
             mensajeError = e.localizedMessage ?: "Error de conexión interdimensional"
         } finally {
